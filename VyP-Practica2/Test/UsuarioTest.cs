@@ -305,7 +305,54 @@ namespace Test
 
         } // fin metodo crea usuario
 
-        
+        [TestMethod]
+        public void editPasswordTest()
+        {
+            String p = usuario1.password;
+            usuario1.editPassword("987654321bB");
+            Assert.AreNotEqual(p, usuario1.password);
+        }
+
+        [TestMethod]
+        public void editTipoTest()
+        {
+            TipoUsuario t = usuario1.tipo;
+            usuario1.editTipo(TipoUsuario.ADMINISTRADOR);
+            Assert.AreNotEqual(t, usuario1.tipo);
+        }
+
+        [TestMethod]
+        public void editFechaNacimientoTest()
+        {
+            DateTime f = usuario1.fechaNacimiento;
+            usuario1.editFechaNacimiento(new DateTime(2000, 12, 12));
+            Assert.AreNotEqual(f, usuario1.fechaNacimiento);
+        }
+
+        [TestMethod]
+        public void editNombre()
+        {
+            String nombre = usuario1.nombre;
+            usuario1.editNombre("Abababa");
+            Assert.AreNotEqual(nombre, usuario1.nombre);
+        }
+
+        [TestMethod]
+        public void editApellido1()
+        {
+            String a = usuario1.apellido1;
+            usuario1.editApellido1("Abababa");
+            Assert.AreNotEqual(a, usuario1.apellido1);
+        }
+
+        [TestMethod]
+        public void editApellido2()
+        {
+            String a = usuario1.apellido2;
+            usuario1.editApellido2("Abababa");
+            Assert.AreNotEqual(a, usuario1.apellido2);
+        }
+
         [TestMethod]
         public void intentoLoginTest()
         {
@@ -398,11 +445,11 @@ namespace Test
         [TestMethod()]
         public void GetHashCodeTest()
         {
-            Paciente paciente3 = paciente1;
+            Usuario usuario3 = usuario1;
             //HashCode Idénticos
-            Assert.AreEqual(paciente3.GetHashCode(), paciente1.GetHashCode());
+            Assert.AreEqual(usuario3.GetHashCode(), usuario1.GetHashCode());
             //HashCode Diferentes
-            Assert.AreNotEqual(paciente1.GetHashCode(), paciente2.GetHashCode());
+            Assert.AreNotEqual(usuario1.GetHashCode(), usuario2.GetHashCode());
             //Fin
             System.Console.WriteLine("Test Usuario.GetHashCode() completado");
         }
