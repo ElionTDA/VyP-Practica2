@@ -31,11 +31,11 @@ namespace Test
             //Añadimos el usuario
             Assert.IsTrue(dbpruebas.addUsuario(usuario));
             //Comprobamos que el usuario que añadimos sea el que obtenemos
-            Assert.AreEqual(dbpruebas.getUsuarioPorNick(usuario.nick), usuario);
+            Assert.AreEqual(dbpruebas.getUsuarioPorNick(usuario.Nick), usuario);
             //Comprobamos que el usuario se ha eliminado
-            Assert.IsTrue(dbpruebas.deleteUsuarioPorNick(usuario.nick));
+            Assert.IsTrue(dbpruebas.deleteUsuarioPorNick(usuario.Nick));
             //Comprobamos que no existe
-            Assert.IsNull(dbpruebas.getUsuarioPorNick(usuario.nick));
+            Assert.IsNull(dbpruebas.getUsuarioPorNick(usuario.Nick));
         }
 
         [TestMethod]
@@ -53,7 +53,7 @@ namespace Test
             //Añadimos el usuario
             Assert.IsTrue(dbpruebas.addUsuario(usuario));
             //Probamos a pedir un usuario que si existe
-            Assert.Equals(dbpruebas.getUsuarioPorNick(usuario.nick),usuario);
+            Assert.Equals(dbpruebas.getUsuarioPorNick(usuario.Nick),usuario);
         }
 
         [TestMethod]
@@ -69,19 +69,19 @@ namespace Test
             Assert.IsTrue(dbpruebas.addUsuario(usuario));
 
             //Cambiamos el nombre y nos deja
-            Assert.IsTrue(dbpruebas.cambiarDatosUsuario(usuario.nick, usuario.password, "Iglesias", usuario.apellido1, usuario.apellido2, usuario.fechaNacimiento));
+            Assert.IsTrue(dbpruebas.cambiarDatosUsuario(usuario.Nick, usuario.Password, "Iglesias", usuario.Apellido1, usuario.Apellido2, usuario.FechaNacimiento));
 
             //Cambiamos el nombre por null y no nos deja
             try
             {
-                dbpruebas.cambiarDatosUsuario(usuario.nick, usuario.password, "null", usuario.apellido1, usuario.apellido2, usuario.fechaNacimiento);
+                dbpruebas.cambiarDatosUsuario(usuario.Nick, usuario.Password, "null", usuario.Apellido1, usuario.Apellido2, usuario.FechaNacimiento);
                 Assert.Fail("El nombre no debería ser nullable.");
             }
             catch (ArgumentNullException e) { }
 
             //Si el nick o el password son erróneos, tiene que fallar
-            Assert.IsFalse(dbpruebas.cambiarDatosUsuario("java33",usuario.password, "Pepito", usuario.apellido1, usuario.apellido2, usuario.fechaNacimiento));
-            Assert.IsFalse(dbpruebas.cambiarDatosUsuario(usuario.nick, "unpassworddiferente", "Pepito", usuario.apellido1, usuario.apellido2, usuario.fechaNacimiento));
+            Assert.IsFalse(dbpruebas.cambiarDatosUsuario("java33",usuario.Password, "Pepito", usuario.Apellido1, usuario.Apellido2, usuario.FechaNacimiento));
+            Assert.IsFalse(dbpruebas.cambiarDatosUsuario(usuario.Nick, "unpassworddiferente", "Pepito", usuario.Apellido1, usuario.Apellido2, usuario.FechaNacimiento));
         }
 
         [TestMethod]
@@ -90,19 +90,19 @@ namespace Test
             //Añadimos un usuario
             Assert.IsTrue(dbpruebas.addUsuario(usuario));
             //Y cambiamos su contraseña
-            Assert.IsTrue(dbpruebas.cambiarPassword(usuario.nick, usuario.password, Utilidad.cifrar("nuevacontrasena33")));
+            Assert.IsTrue(dbpruebas.cambiarPassword(usuario.Nick, usuario.password, Utilidad.cifrar("nuevacontrasena33")));
 
             //Comprobamos que la contraseña no es nullable
             try
             {
-                dbpruebas.cambiarPassword(usuario.nick, usuario.password, null);
+                dbpruebas.cambiarPassword(usuario.Nick, usuario.Password, null);
                 Assert.Fail("El password no debería ser nullable.");
             }
             //Capturamos que uno de los datos no tiene set definido
             catch (ArgumentNullException e) { }
 
             //Si el nick no existe, tampoco debería realizar ninguna operación
-            Assert.IsFalse(dbpruebas.cambiarPassword("java33",usuario.password,Utilidad.cifrar("nuevacontrasena")));
+            Assert.IsFalse(dbpruebas.cambiarPassword("java33",usuario.Password,Utilidad.cifrar("nuevacontrasena")));
         }
 
         [TestMethod]
@@ -112,19 +112,19 @@ namespace Test
             Assert.IsTrue(dbpruebas.addUsuario(usuario));
 
             //Cambiamos el apellido1 y nos deja
-            Assert.IsTrue(dbpruebas.cambiarDatosUsuario(usuario.nick, usuario.password, usuario.nombre, "reckles", usuario.apellido2, usuario.fechaNacimiento));
+            Assert.IsTrue(dbpruebas.cambiarDatosUsuario(usuario.Nick, usuario.Password, usuario.Nombre, "reckles", usuario.Apellido2, usuario.FechaNacimiento));
 
             //Cambiamos el apellido1 por null y no nos deja
             try
             {
-                dbpruebas.cambiarDatosUsuario(usuario.nick, usuario.password, usuario.nombre, null, usuario.apellido2, usuario.fechaNacimiento);
+                dbpruebas.cambiarDatosUsuario(usuario.Nick, usuario.Password, usuario.Nombre, null, usuario.Apellido2, usuario.FechaNacimiento);
                 Assert.Fail("El nombre no debería ser nullable.");
             }
             catch (ArgumentNullException e) { }
 
             //Si el nick o el password son incorrectos, no se debe modificar nada
-            Assert.IsFalse(dbpruebas.cambiarDatosUsuario("java33", usuario.password, usuario.nombre, "Pepítez", usuario.apellido2, usuario.fechaNacimiento));
-            Assert.IsFalse(dbpruebas.cambiarDatosUsuario(usuario.nick, "unpassworddiferente", usuario.nombre, "Pepítez", usuario.apellido2, usuario.fechaNacimiento));
+            Assert.IsFalse(dbpruebas.cambiarDatosUsuario("java33", usuario.Password, usuario.Nombre, "Pepítez", usuario.Apellido2, usuario.FechaNacimiento));
+            Assert.IsFalse(dbpruebas.cambiarDatosUsuario(usuario.Nick, "unpassworddiferente", usuario.Nombre, "Pepítez", usuario.Apellido2, usuario.FechaNacimiento));
         }
 
         [TestMethod]
@@ -133,19 +133,19 @@ namespace Test
             Assert.IsTrue(dbpruebas.addUsuario(usuario));
 
             //Cambiamos el apellido2 y nos deja
-            Assert.IsTrue(dbpruebas.cambiarDatosUsuario(usuario.nick, usuario.password, usuario.nombre, usuario.apellido1, "Pepinillos", usuario.fechaNacimiento));
+            Assert.IsTrue(dbpruebas.cambiarDatosUsuario(usuario.Nick, usuario.Password, usuario.Nombre, usuario.Apellido1, "Pepinillos", usuario.FechaNacimiento));
 
             //Cambiamos el apellido2 por null y no nos deja
             try
             {
-                dbpruebas.cambiarDatosUsuario(usuario.nick, usuario.password, usuario.nombre, usuario.apellido1, null, usuario.fechaNacimiento);
+                dbpruebas.cambiarDatosUsuario(usuario.Nick, usuario.Password, usuario.Nombre, usuario.Apellido1, null, usuario.FechaNacimiento);
                 Assert.Fail("El nombre no debería ser nullable.");
             }
             catch (ArgumentNullException e) { }
 
             //Si el nick o el password son incorrectos, no se debe modificar nada
-            Assert.IsFalse(dbpruebas.cambiarDatosUsuario("java33", usuario.password, usuario.nombre, usuario.apellido1, "Pepinillos", usuario.fechaNacimiento));
-            Assert.IsFalse(dbpruebas.cambiarDatosUsuario(usuario.nick, "unpassworddiferente", usuario.nombre, usuario.apellido1, "Pepinillos", usuario.fechaNacimiento));
+            Assert.IsFalse(dbpruebas.cambiarDatosUsuario("java33", usuario.Password, usuario.Nombre, usuario.Apellido1, "Pepinillos", usuario.FechaNacimiento));
+            Assert.IsFalse(dbpruebas.cambiarDatosUsuario(usuario.Nick, "unpassworddiferente", usuario.Nombre, usuario.Apellido1, "Pepinillos", usuario.FechaNacimiento));
         }
 
         [TestMethod]
@@ -155,27 +155,27 @@ namespace Test
             Assert.IsTrue(dbpruebas.addUsuario(usuario));
 
             //Cambiamos el nombre y nos deja
-            Assert.IsTrue(dbpruebas.cambiarDatosUsuario(usuario.nick, usuario.password, usuario.nombre, usuario.apellido1, usuario.apellido2, new DateTime(1950,1,11)));
+            Assert.IsTrue(dbpruebas.cambiarDatosUsuario(usuario.Nick, usuario.Password, usuario.Nombre, usuario.Apellido1, usuario.Apellido2, new DateTime(1950,1,11)));
 
             //Cambiamos la fecha de nacimiento por null y no nos deja
             try
             {
-                dbpruebas.cambiarDatosUsuario(usuario.nick, usuario.password, usuario.nombre, usuario.apellido1, usuario.apellido2, null);
+                dbpruebas.cambiarDatosUsuario(usuario.Nick, usuario.Password, usuario.Nombre, usuario.Apellido1, usuario.Apellido2, null);
                 Assert.Fail("El nombre no debería ser nullable.");
             }
             catch (ArgumentNullException e) { }
 
             //Si el nick o el password son incorrectos, no se debe modificar nada
-            Assert.IsFalse(dbpruebas.cambiarDatosUsuario("java33", usuario.password, usuario.nombre, usuario.apellido1, usuario.apellido2, new DateTime(1950, 1, 11)));
-            Assert.IsFalse(dbpruebas.cambiarDatosUsuario(usuario.nick, "unpassworddiferente", usuario.nombre, usuario.apellido1, usuario.apellido2, new DateTime(1950, 1, 11)));
+            Assert.IsFalse(dbpruebas.cambiarDatosUsuario("java33", usuario.Password, usuario.Nombre, usuario.Apellido1, usuario.Apellido2, new DateTime(1950, 1, 11)));
+            Assert.IsFalse(dbpruebas.cambiarDatosUsuario(usuario.Nick, "unpassworddiferente", usuario.Nombre, usuario.Apellido1, usuario.Apellido2, new DateTime(1950, 1, 11)));
 
             //Si intentamos poner una fecha posterior a hoy, malo (como mucho, puedes nacer hoy).
             DateTime hoy = System.DateTime.Today;
             DateTime mañana = hoy.AddDays(1);
             DateTime ayer = hoy.AddDays(-1);
-            Assert.IsFalse(dbpruebas.cambiarDatosUsuario(usuario.nick, usuario.password, usuario.nombre, usuario.apellido1, usuario.apellido2, ayer));
-            Assert.IsTrue(dbpruebas.cambiarDatosUsuario(usuario.nick, usuario.password, usuario.nombre, usuario.apellido1, usuario.apellido2, hoy));
-            Assert.IsFalse(dbpruebas.cambiarDatosUsuario(usuario.nick, usuario.password, usuario.nombre, usuario.apellido1, usuario.apellido2, mañana));
+            Assert.IsTrue(dbpruebas.cambiarDatosUsuario(usuario.Nick, usuario.Password, usuario.Nombre, usuario.Apellido1, usuario.Apellido2, ayer));
+            Assert.IsTrue(dbpruebas.cambiarDatosUsuario(usuario.Nick, usuario.Password, usuario.Nombre, usuario.Apellido1, usuario.Apellido2, hoy));
+            Assert.IsFalse(dbpruebas.cambiarDatosUsuario(usuario.Nick, usuario.Password, usuario.Nombre, usuario.Apellido1, usuario.Apellido2, mañana));
         }
     }
 }

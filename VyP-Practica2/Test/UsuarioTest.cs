@@ -308,49 +308,49 @@ namespace Test
         [TestMethod]
         public void editPasswordTest()
         {
-            String p = usuario1.password;
+            String p = usuario1.Password;
             usuario1.editPassword("987654321bB");
-            Assert.AreNotEqual(p, usuario1.password);
+            Assert.AreNotEqual(p, usuario1.Password);
         }
 
         [TestMethod]
         public void editTipoTest()
         {
-            TipoUsuario t = usuario1.tipo;
+            TipoUsuario t = usuario1.Tipo;
             usuario1.editTipo(TipoUsuario.ADMINISTRADOR);
-            Assert.AreNotEqual(t, usuario1.tipo);
+            Assert.AreNotEqual(t, usuario1.Tipo);
         }
 
         [TestMethod]
         public void editFechaNacimientoTest()
         {
-            DateTime f = usuario1.fechaNacimiento;
+            DateTime f = usuario1.FechaNacimiento;
             usuario1.editFechaNacimiento(new DateTime(2000, 12, 12));
-            Assert.AreNotEqual(f, usuario1.fechaNacimiento);
+            Assert.AreNotEqual(f, usuario1.FechaNacimiento);
         }
 
         [TestMethod]
         public void editNombre()
         {
-            String nombre = usuario1.nombre;
+            String nombre = usuario1.Nombre;
             usuario1.editNombre("Abababa");
-            Assert.AreNotEqual(nombre, usuario1.nombre);
+            Assert.AreNotEqual(nombre, usuario1.Nombre);
         }
 
         [TestMethod]
         public void editApellido1()
         {
-            String a = usuario1.apellido1;
+            String a = usuario1.Apellido1;
             usuario1.editApellido1("Abababa");
-            Assert.AreNotEqual(a, usuario1.apellido1);
+            Assert.AreNotEqual(a, usuario1.Apellido1);
         }
 
         [TestMethod]
         public void editApellido2()
         {
-            String a = usuario1.apellido2;
+            String a = usuario1.Apellido2;
             usuario1.editApellido2("Abababa");
-            Assert.AreNotEqual(a, usuario1.apellido2);
+            Assert.AreNotEqual(a, usuario1.Apellido2);
         }
 
         [TestMethod]
