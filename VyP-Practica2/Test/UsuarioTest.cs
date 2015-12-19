@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Logica;
 
 namespace Test
 {
@@ -270,7 +271,7 @@ namespace Test
             // Formato de fecha no valida
             try
             {
-                new Usuario("Juanito", "1234567890a", "Juan", "Pérez", "López", 29-2-2001);
+                new Usuario("Juanito", "1234567890a", "Juan", "Pérez", "López", new DateTime(2020-1-10));
                 Assert.Fail("Fallo, Formato de fecha no valida.");
             }
             catch (Exception e)
@@ -309,7 +310,7 @@ namespace Test
         public void editPasswordTest()
         {
             String p = usuario1.Password;
-            usuario1.editPassword("987654321bB");
+            usuario1.cambiarDatosUsuario(null, "987654321bB", null, null, null, null);
             Assert.AreNotEqual(p, usuario1.Password);
         }
 
@@ -324,8 +325,8 @@ namespace Test
         [TestMethod]
         public void editFechaNacimientoTest()
         {
-            DateTime f = usuario1.FechaNacimiento;
-            usuario1.editFechaNacimiento(new DateTime(2000, 12, 12));
+            DateTime? f = usuario1.FechaNacimiento;
+            usuario1.cambiarDatosUsuario(null, null, null, null, null, new DateTime(2000, 12, 12));
             Assert.AreNotEqual(f, usuario1.FechaNacimiento);
         }
 
@@ -333,7 +334,7 @@ namespace Test
         public void editNombre()
         {
             String nombre = usuario1.Nombre;
-            usuario1.editNombre("Abababa");
+            usuario1.cambiarDatosUsuario(null, null, "Abababa", null, null, null);
             Assert.AreNotEqual(nombre, usuario1.Nombre);
         }
 
@@ -341,7 +342,7 @@ namespace Test
         public void editApellido1()
         {
             String a = usuario1.Apellido1;
-            usuario1.editApellido1("Abababa");
+            usuario1.cambiarDatosUsuario(null, null, "Abababa", null, null, null);
             Assert.AreNotEqual(a, usuario1.Apellido1);
         }
 
@@ -349,7 +350,7 @@ namespace Test
         public void editApellido2()
         {
             String a = usuario1.Apellido2;
-            usuario1.editApellido2("Abababa");
+            usuario1.cambiarDatosUsuario(null, null, null, "Abababa", null, null);
             Assert.AreNotEqual(a, usuario1.Apellido2);
         }
 

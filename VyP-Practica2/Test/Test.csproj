@@ -57,6 +57,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtilidadTest.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logica\Logica.csproj">
+      <Project>{6B639992-BA74-4E83-A316-15CF45C5EA7D}</Project>
+      <Name>Logica</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

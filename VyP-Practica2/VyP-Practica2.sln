@@ -1,11 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{8C41AF6A-3056-42B4-8630-C09F742D8103}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{BE8C27FC-235E-451E-93F8-6504A248EE1B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6B639992-BA74-4E83-A316-15CF45C5EA7D} = {6B639992-BA74-4E83-A316-15CF45C5EA7D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csproj", "{6B639992-BA74-4E83-A316-15CF45C5EA7D}"
 EndProject

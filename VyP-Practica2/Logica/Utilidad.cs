@@ -114,5 +114,10 @@ namespace Logica
             }
         }
 
+        public void cifrar()
+        {
+
+        }
+
     }// fin clase
 }

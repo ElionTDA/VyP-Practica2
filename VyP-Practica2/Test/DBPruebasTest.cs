@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Logica;
 
 namespace Test
 {
@@ -90,7 +91,7 @@ namespace Test
             //Añadimos un usuario
             Assert.IsTrue(dbpruebas.addUsuario(usuario));
             //Y cambiamos su contraseña
-            Assert.IsTrue(dbpruebas.cambiarPassword(usuario.Nick, usuario.password, Utilidad.cifrar("nuevacontrasena33")));
+            Assert.IsTrue(dbpruebas.cambiarPassword(usuario.Nick, usuario.Password, Utilidad.cifrar("nuevacontrasena33")));
 
             //Comprobamos que la contraseña no es nullable
             try
