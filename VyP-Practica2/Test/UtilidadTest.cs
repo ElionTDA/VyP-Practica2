@@ -38,30 +38,30 @@ namespace Test
         [TestMethod()]
         public void compruebaFechaValidaTest()
         {
-            Assert.IsFalse(Utilidad.validaFecha(2001, 08, 32));   //Miramos los máximos y mínimos de día
-            Assert.IsFalse(Utilidad.validaFecha(2001, 08, 0));
-            Assert.IsFalse(Utilidad.validaFecha(2001, 08, -1));
+            Assert.IsFalse(Utilidad.compruebaFechaValida(2001, 08, 32));   //Miramos los máximos y mínimos de día
+            Assert.IsFalse(Utilidad.compruebaFechaValida(2001, 08, 0));
+            Assert.IsFalse(Utilidad.compruebaFechaValida(2001, 08, -1));
 
-            Assert.IsFalse(Utilidad.validaFecha(2000, 13, 05)); //Miramos los máximos y mínimos de mes
-            Assert.IsFalse(Utilidad.validaFecha(2000, 0, 05));
-            Assert.IsFalse(Utilidad.validaFecha(2000, -1, 05));
+            Assert.IsFalse(Utilidad.compruebaFechaValida(2000, 13, 05)); //Miramos los máximos y mínimos de mes
+            Assert.IsFalse(Utilidad.compruebaFechaValida(2000, 0, 05));
+            Assert.IsFalse(Utilidad.compruebaFechaValida(2000, -1, 05));
 
-            Assert.IsFalse(Utilidad.validaFecha(2016, 10, 06));  //Miramos los máximos y mínimos de año
-            Assert.IsFalse(Utilidad.validaFecha(0, 06, 06));
-            Assert.IsFalse(Utilidad.validaFecha(-1, 0, 05));
+            Assert.IsFalse(Utilidad.compruebaFechaValida(2016, 10, 06));  //Miramos los máximos y mínimos de año
+            Assert.IsFalse(Utilidad.compruebaFechaValida(0, 06, 06));
+            Assert.IsFalse(Utilidad.compruebaFechaValida(-1, 0, 05));
 
 
-            Assert.IsFalse(Utilidad.validaFecha(2005, 04, 31)); //tiene 30 dias
-            Assert.IsTrue(Utilidad.validaFecha(2005, 04, 30)); //tiene 30 dias
+            Assert.IsFalse(Utilidad.compruebaFechaValida(2005, 04, 31)); //tiene 30 dias
+            Assert.IsTrue(Utilidad.compruebaFechaValida(2005, 04, 30)); //tiene 30 dias
 
-            Assert.IsFalse(Utilidad.validaFecha(2005, 05, 32)); //tiene 31 dias
-            Assert.IsTrue(Utilidad.validaFecha(2005, 05, 31)); //tiene 31 dias
+            Assert.IsFalse(Utilidad.compruebaFechaValida(2005, 05, 32)); //tiene 31 dias
+            Assert.IsTrue(Utilidad.compruebaFechaValida(2005, 05, 31)); //tiene 31 dias
 
-            Assert.IsFalse(Utilidad.validaFecha(2000, 02, 30)); //tiene 29 dias
-            Assert.IsTrue(Utilidad.validaFecha(2000, 02, 29)); //tiene 29 dias
+            Assert.IsFalse(Utilidad.compruebaFechaValida(2000, 02, 30)); //tiene 29 dias
+            Assert.IsTrue(Utilidad.compruebaFechaValida(2000, 02, 29)); //tiene 29 dias
 
-            Assert.IsFalse(Utilidad.validaFecha(2001, 02, 29)); //tiene 28 dias
-            Assert.IsTrue(Utilidad.validaFecha(2001, 02, 28)); //tiene 28 dias
+            Assert.IsFalse(Utilidad.compruebaFechaValida(2001, 02, 29)); //tiene 28 dias
+            Assert.IsTrue(Utilidad.compruebaFechaValida(2001, 02, 28)); //tiene 28 dias
         }
 
 
