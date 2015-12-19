@@ -14,11 +14,15 @@ namespace Test
         private static DBPruebas dbpruebas = null;
         private Usuario usuario = null;
 
+        public DBPruebasTest()
+        {
+            usuario = new Usuario("Pepita33", "1234567890a", "Cantinflas", "Sánchez", "Rajoy", new DateTime(1950, 1, 10));
+        }
+
         [TestInitialize]
         public void Inicializar()
         {
             dbpruebas = new DBPruebas();
-            usuario = new Usuario("Pepita33", "1234567890a", "Cantinflas", "Sánchez", "Rajoy", new DateTime(1950, 1, 10));
         }
 
         [TestMethod]
@@ -27,11 +31,11 @@ namespace Test
             //Añadimos el usuario
             Assert.IsTrue(dbpruebas.addUsuario(usuario));
             //Comprobamos que el usuario que añadimos sea el que obtenemos
-            Assert.AreEqual(dbpruebas.getUsuarioPorId(usuario.getId()), usuario);
+            Assert.AreEqual(dbpruebas.getUsuarioPorNick(usuario.nick), usuario);
             //Comprobamos que el usuario se ha eliminado
-            Assert.IsTrue(dbpruebas.deleteUsuarioPorId(usuario.getId()));
+            Assert.IsTrue(dbpruebas.deleteUsuarioPorNick(usuario.nick));
             //Comprobamos que no existe
-            Assert.IsNull(dbpruebas.getUsuarioPorId());
+            Assert.IsNull(dbpruebas.getUsuarioPorNick(usuario.nick));
         }
 
         [TestMethod]
