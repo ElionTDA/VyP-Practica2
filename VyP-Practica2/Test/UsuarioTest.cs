@@ -32,7 +32,7 @@ namespace Test
                 ////  NICK  ////
                 ////////////////
             // Nick demasiado corto < 2
-            // Nick demasiado largo > 21
+            // Nick demasiado largo > 20
             // Nick que empieza por numero.
             // Nick que empiece por caracter especial.
 
@@ -45,7 +45,7 @@ namespace Test
             catch (Exception e)
             { }
 
-            // Nick demasiado largo > 21
+            // Nick demasiado largo > 20
             try
             {
                 new Usuario("JuanitoitoitoMolaMuch", "123456789aA", "Juan", "Perez", "Lopez", new DateTime(1992, 2, 29));
@@ -169,7 +169,7 @@ namespace Test
             }
             catch (Exception e)
             { }
-
+ 
                 /////////////////////
                 ////  APELLIDO1  ////
                 /////////////////////
@@ -306,25 +306,152 @@ namespace Test
         } // fin metodo crea usuario
 
         [TestMethod]
-        public void bloqueaUsuarioTest()
+        public void editPasswordTest()
         {
-            bool flag;
-            flag = usuario1.bloqueaUsuario();
-
-            Assert.IsTrue(flag);
-            Assert.IsTrue(usuario1.bloqueado);
+            String p = usuario1.password;
+            usuario1.editPassword("987654321bB");
+            Assert.AreNotEqual(p, usuario1.password);
         }
 
         [TestMethod]
-        public void desbloqueaUsuarioTest()
+        public void editTipoTest()
         {
-            bool flag;
-            flag = usuario1.desbloqueaUsuario();
-
-            Assert.IsTrue(flag);
-            Assert.IsFalse(usuario1.bloqueado);
+            TipoUsuario t = usuario1.tipo;
+            usuario1.editTipo(TipoUsuario.ADMINISTRADOR);
+            Assert.AreNotEqual(t, usuario1.tipo);
         }
 
+        [TestMethod]
+        public void editFechaNacimientoTest()
+        {
+            DateTime f = usuario1.fechaNacimiento;
+            usuario1.editFechaNacimiento(new DateTime(2000, 12, 12));
+            Assert.AreNotEqual(f, usuario1.fechaNacimiento);
+        }
 
+        [TestMethod]
+        public void editNombre()
+        {
+            String nombre = usuario1.nombre;
+            usuario1.editNombre("Abababa");
+            Assert.AreNotEqual(nombre, usuario1.nombre);
+        }
+
+        [TestMethod]
+        public void editApellido1()
+        {
+            String a = usuario1.apellido1;
+            usuario1.editApellido1("Abababa");
+            Assert.AreNotEqual(a, usuario1.apellido1);
+        }
+
+        [TestMethod]
+        public void editApellido2()
+        {
+            String a = usuario1.apellido2;
+            usuario1.editApellido2("Abababa");
+            Assert.AreNotEqual(a, usuario1.apellido2);
+        }
+
+        [TestMethod]
+        public void intentoLoginTest()
+        {
+            // El usuario se loguea a la primera
+            try
+            {
+                usuario1.intentoLogin("123456789aA");
+            }
+            catch (Exception e)
+            {
+                Assert.Fail("No debería haber fallado");
+            }
+
+
+            // El usuario se loguea a la segunda.
+            try
+            {
+                usuario1.intentoLogin("");
+                usuario1.intentoLogin("123456789aA");
+            }
+            catch (Exception e)
+            {
+                Assert.Fail("No debería haber fallado");
+            }
+
+
+            // El usuario se loguea a la tercera
+            try
+            {
+                usuario1.intentoLogin("");
+                usuario1.intentoLogin("");
+                usuario1.intentoLogin("123456789aA");
+            }
+            catch (Exception e)
+            {
+                Assert.Fail("No debería haber fallado");
+            }
+
+
+            // El usuario falla 3 veces y se bloquea
+            try
+            {
+                usuario1.intentoLogin("");
+                usuario1.intentoLogin("");
+                usuario1.intentoLogin("");
+                Assert.Fail("Fallo, deberia dar error, usuario bloqueado.");
+            }
+            catch (Exception e)
+            { }
+
+            // Contando con que el usuario ya esta bloqueado... 
+            // Si lo intentamos de nuevo, debería dar excepción.
+            try
+            {
+                usuario1.intentoLogin("");
+                usuario1.intentoLogin("");
+                Assert.Fail("Fallo, deberia dar error, usuario bloqueado.");
+            }
+            catch (Exception e)
+            { }
+
+            // Comrpobamos que el numero de usuarios se resetea correctamente cuando se acierta.
+            // Suponiendo que no reseteara bien el nro intentos, daría error al intentar el segundo log in
+            try
+            {
+                // Primer log in
+                usuario2.intentoLogin("");
+                usuario2.intentoLogin("");
+                usuario2.intentoLogin("123456789aA"); // se pone el nro intentos a 0
+                                                      // Segundo log in
+                usuario2.intentoLogin("");
+                usuario2.intentoLogin("");
+                usuario2.intentoLogin("123456789aA"); // se pone el nro intentos a 0
+            }
+            catch (Exception e)
+            {
+                Assert.Fail("No debería haber fallado");
+            }
+
+        } //fin test metodo intentoLogin
+
+        [TestMethod()]
+        public void EqualsTest()
+        {
+            Assert.IsTrue(usuario1.Equals(usuario1));
+            Assert.IsFalse(usuario1.Equals(usuario2));
+            System.Console.WriteLine("Test método Usuario.Equals() completado");
+        }
+
+        [TestMethod()]
+        public void GetHashCodeTest()
+        {
+            Usuario usuario3 = usuario1;
+            //HashCode Idénticos
+            Assert.AreEqual(usuario3.GetHashCode(), usuario1.GetHashCode());
+            //HashCode Diferentes
+            Assert.AreNotEqual(usuario1.GetHashCode(), usuario2.GetHashCode());
+            //Fin
+            System.Console.WriteLine("Test Usuario.GetHashCode() completado");
+        }
     }// fin clase usuario
 }
