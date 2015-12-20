@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace Logica
 {
@@ -114,9 +115,18 @@ namespace Logica
             }
         }
 
-        public void cifrar()
+        public String cifrar(String password)
         {
+            HashAlgorithm hashValue = new
+            SHA1CryptoServiceProvider();
 
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(password);
+
+            byte[] byteHash = hashValue.ComputeHash(bytes);
+
+            hashValue.Clear();
+
+            return (Convert.ToBase64String(byteHash));
         }
 
     }// fin clase
