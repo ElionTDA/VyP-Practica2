@@ -30,7 +30,7 @@ namespace Logica
             if (nick != null && password != null && Utilidad.compruebaNick(nick))
             {
                 this.idUsuario = contadorId++;
-                Nick = nick;
+                this.nick = nick;
                 Password = password;
                 Nombre = nombre;
                 Apellido1 = apellido1;
@@ -52,7 +52,7 @@ namespace Logica
 
         public String Nick
         {
-            get;
+            get { return nick; }
         }
 
         public String Password
