@@ -47,6 +47,8 @@ namespace Test
             Assert.IsTrue(dbpruebas.addUsuario(usuario));
             //Comprobamos que no nos permite añadir el mismo usuario
             Assert.IsFalse(dbpruebas.addUsuario(usuario));
+            //Y, finalmente lo eliminamos
+            Assert.IsTrue(dbpruebas.deleteUsuarioPorNick(usuario.Nick, password));
         }
 
         [TestMethod]
