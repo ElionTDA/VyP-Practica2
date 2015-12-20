@@ -17,15 +17,14 @@ namespace Logica
         /// <returns>True o false, en función de si cumple o no.</returns>
         public static bool compruebaNick(String nick)
         {
-            if (nick == null)
+            bool flag = false;
+            if (nick != null && nick.Length > 2 && nick.Length <= 20)
             {
-                return false;
+                Regex val = new Regex(@"^[a-zA-Z][a-zA-Z\s0-9[-]]*");
+                flag = val.IsMatch(nick);
             }
-            Regex val = new Regex(@"[a-zA-Z][a-zA-Z\s0-9]{1,20}");
-            //Regex val = new Regex(@"^[a-zA-ZñÑ\s]{2,50}$");
-            //Regex val = new Regex("^[a - zA - Z_áéíóúñ]*$");
 
-            return val.IsMatch(nick);
+            return flag;
         }
 
         /// <summary>
@@ -35,15 +34,14 @@ namespace Logica
         /// <returns>True o false, en función de si cumple o no.</returns>
         public static bool compruebaNombre(String nombre)
         {
-            if (nombre == null)
+            bool flag = false;
+            if (nombre != null && nombre.Length > 2 && nombre.Length <= 20)
             {
-                return false;
+                Regex val = new Regex(@"^[a-zA-Z][a-zA-ZñÑ\s]*");
+                flag = val.IsMatch(nombre);
             }
-            Regex val = new Regex(@"[a-zA-ZñÑ\s]{2,20}");
-            //Regex val = new Regex(@"^[a-zA-ZñÑ\s]{2,50}$");
-            //Regex val = new Regex("^[a - zA - Z_áéíóúñ]*$");
 
-            return val.IsMatch(nombre);
+            return flag;
         }
 
         /// <summary>

@@ -63,6 +63,10 @@ namespace Logica
                 {
                     password = value;
                 }
+                else
+                {
+                    throw new Exception();
+                }
             }
         }
 
@@ -91,14 +95,21 @@ namespace Logica
             }
             set
             {
-                DateTime d = (DateTime)value;
-                if (Utilidad.compruebaFechaValida(d.Year, d.Month, d.Day))
+                if (value != null)
                 {
-                    fechaNacimiento = value;
+                    DateTime d = (DateTime)value;
+                    if (Utilidad.compruebaFechaValida(d.Year, d.Month, d.Day))
+                    {
+                        fechaNacimiento = value;
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
                 }
                 else
                 {
-                    // Lanzar excepcion
+                    fechaNacimiento = value;
                 }
             }
         }
@@ -108,7 +119,18 @@ namespace Logica
             get { return nombre; }
             set
             {
-                if (Utilidad.compruebaNombre(value))
+                if (value != null)
+                {
+                    if (Utilidad.compruebaNombre(value))
+                    {
+                        nombre = value;
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
+                }
+                else
                 {
                     nombre = value;
                 }
@@ -120,9 +142,20 @@ namespace Logica
             get { return apellido1; }
             set
             {
-                if (Utilidad.compruebaNombre(value))
+                if (value != null)
                 {
-                    apellido1 = value;
+                    if (Utilidad.compruebaNombre(value))
+                    {
+                        apellido1 = value;
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
+                }
+                else
+                {
+                    nombre = value;
                 }
             }
         }
@@ -132,9 +165,20 @@ namespace Logica
             get { return apellido2; }
             set
             {
-                if (Utilidad.compruebaNombre(value))
+                if (value != null)
                 {
-                    apellido2 = value;
+                    if (Utilidad.compruebaNombre(value))
+                    {
+                        apellido2 = value;
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
+                }
+                else
+                {
+                    nombre = value;
                 }
             }
         }

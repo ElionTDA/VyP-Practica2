@@ -55,7 +55,7 @@ namespace Test
             //Añadimos el usuario
             Assert.IsTrue(dbpruebas.addUsuario(usuario));
             //Probamos a pedir un usuario que si existe
-            Assert.Equals(dbpruebas.getUsuarioPorNick(usuario.Nick),usuario);
+            Assert.AreEqual(dbpruebas.getUsuarioPorNick(usuario.Nick),usuario);
         }
 
         [TestMethod]
@@ -114,12 +114,14 @@ namespace Test
             Assert.IsTrue(dbpruebas.addUsuario(usuario));
 
             //Cambiamos el apellido1 y nos deja
-            Assert.IsTrue(dbpruebas.cambiarDatosUsuario(usuario.Nick, password, usuario.Nombre, "reckles", usuario.Apellido2, usuario.FechaNacimiento));
+            Assert.IsTrue(dbpruebas.cambiarDatosUsuario(usuario.Nick, password, usuario.Nombre, "reckles", 
+                usuario.Apellido2, usuario.FechaNacimiento));
 
             //Cambiamos el apellido1 por null y no nos deja
             try
             {
-                dbpruebas.cambiarDatosUsuario(usuario.Nick, password, usuario.Nombre, null, usuario.Apellido2, usuario.FechaNacimiento);
+                dbpruebas.cambiarDatosUsuario(usuario.Nick, password, usuario.Nombre, null, 
+                    usuario.Apellido2, usuario.FechaNacimiento);
                 Assert.Fail("El nombre no debería ser nullable.");
             }
             catch (ArgumentNullException e) { }

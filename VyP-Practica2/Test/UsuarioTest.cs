@@ -21,8 +21,8 @@ namespace Test
         {
             // Crear los Usuarios validos
             try {
-                new Usuario("JJ8", "123456789aA", "Juan", "Perez","Lopez",new DateTime(1992, 2, 29));
-                new Usuario("JJ9", "123456789aA", null, null, null, null);
+                new Usuario("JJ8", "123456789aA", "Juan", "Perez", "Lopez",new DateTime(1992, 2, 29));
+                new Usuario("Blabla", "123456789aA", null, null, null, null);
             }
             catch(Exception e)
             {
