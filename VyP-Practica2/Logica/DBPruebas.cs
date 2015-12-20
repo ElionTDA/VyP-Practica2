@@ -27,12 +27,25 @@ namespace Logica
         /// Generador de singleton
         /// </summary>
         /// <returns>Instancia única de la clase.</returns>
-        public DBPruebas getInstance()
+        public static DBPruebas getInstance()
         {
             if (instance == null)
                 instance = new DBPruebas();
             return instance;
         }
+
+        /// <summary>
+        /// Eliminar DBPruebas
+        /// </summary>
+        /// <returns>Borrar estado DBPruebas</returns>
+        public static void removeDBPruebas()
+        {
+            if (instance != null)
+            {
+                instance = null;
+            }
+        }
+
 
         /// <summary>
         /// Método para añadir usuario
@@ -50,20 +63,37 @@ namespace Logica
         }
 
         /// <summary>
-        /// Método para obtener Usuario
+        /// Método para obtener Usuario en el Login
         /// </summary>
         /// <param name="nick">Nombre identificativo de Usuario</param>
         /// <param name="password">Contraseña cifrada del usuario</param>
         public Usuario loginUsuario(String nick, String password)
         {
-            foreach (Usuario usuario in listaUsers)
+            Usuario user = getUsuarioPorNick(nick);
+            if (user!=null && password.Equals(user.Password))
             {
-                if (nick.Equals(usuario.Nick) && password.Equals(usuario.Password))
-                    return usuario;
+                return user;
             }
             return null;
 
         }
+
+        /// <summary>
+        /// Método para obtener Usuario en el Login
+        /// </summary>
+        /// <param name="nick">Nombre identificativo de Usuario</param>
+        /// <param name="password">Contraseña cifrada del usuario</param>
+        public Usuario getUsuarioPorNick(String nick)
+        {
+            foreach (Usuario usuario in listaUsers)
+            {
+                if (nick.Equals(usuario.Nick))
+                    return usuario;
+            }
+            return null;
+        }
+
+
 
         /// <summary>
         /// Método parar eliminar el Usuario
