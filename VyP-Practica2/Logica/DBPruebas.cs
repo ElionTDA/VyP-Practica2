@@ -5,11 +5,34 @@ namespace Logica
 {
     public class DBPruebas : ICapaDatos
     {
-        private static DBPruebas x = new DBPruebas();
-        private static List<Usuario> listaUsers = new List<Usuario>();
+        /// <summary>
+        /// Almacena la instancia única de la clase.
+        /// </summary>
+        private static DBPruebas instance = null;
 
-        public DBPruebas() { }
+        /// <summary>
+        /// Almacena la lista de usuarios que posteriormente se manejará.
+        /// </summary>
+        private static List<Usuario> listaUsers = null;
 
+        /// <summary>
+        /// Constructor de la clase.
+        /// </summary>
+        private DBPruebas()
+        {
+             listaUsers = new List<Usuario>();
+        }
+
+        /// <summary>
+        /// Generador de singleton
+        /// </summary>
+        /// <returns>Instancia única de la clase.</returns>
+        public DBPruebas getInstance()
+        {
+            if (instance == null)
+                instance = new DBPruebas();
+            return instance;
+        }
 
         /// <summary>
         /// Método para añadir usuario

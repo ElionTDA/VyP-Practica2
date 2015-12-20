@@ -14,13 +14,15 @@ namespace Logica
         /// Método para obtener Usuario
         /// </summary>
         /// <param name="nick">Nombre identificativo de Usuario</param>
-        Usuario getUsuarioPorNick(String nick);
+        /// <param name="password">Contraseña cifrada del Usuario</param>
+        Usuario loginUsuario(String nick, String password);
 
         /// <summary>
         /// Método parar eliminar el Usuario
         /// </summary>
         /// <param name="nick">Nombre identificativo de Usuario</param>
-        bool deleteUsuarioPorNick(String nick);
+        /// <param name="password">Contraseña cifrada del Usuario</param>
+        bool deleteUsuarioPorNick(String nick, String password);
 
         /// <summary>
         /// Método para actualizar los datos de usuario
