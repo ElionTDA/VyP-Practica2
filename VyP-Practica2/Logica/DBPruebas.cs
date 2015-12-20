@@ -20,7 +20,11 @@ namespace Logica
         /// </summary>
         private DBPruebas()
         {
-             listaUsers = new List<Usuario>();
+            listaUsers = new List<Usuario>();
+            Usuario u = new Usuario("JoseMari43", Utilidad.cifrar("1234567890a"), 
+                "Jose María", "López", "Pérez", new DateTime(1974, 4, 21));
+            u.editTipo(TipoUsuario.ADMINISTRADOR);
+            listaUsers.Add(u);
         }
 
         /// <summary>
