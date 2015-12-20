@@ -104,7 +104,7 @@ namespace Logica
                     }
                     else
                     {
-                        throw new Exception();
+                        //throw new Exception();
                     }
                 }
                 else

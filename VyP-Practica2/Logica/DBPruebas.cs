@@ -126,16 +126,22 @@ namespace Logica
         public bool cambiarDatosUsuario(String nick, String password, String nombre, String apellido1, 
             String apellido2, DateTime? fechaNacimiento)
         {
-            bool flag = false;
-            foreach (Usuario usuario in listaUsers)
-            {
-                if (nick.Equals(usuario.Nick) && usuario.comparaPassword(password))
+            if (nick!=null && password!=null) {
+                foreach (Usuario usuario in listaUsers)
                 {
-                    if (!nombre.Equals(usuario.Nombre)) { usuario.Nombre = nombre; flag = true; }
-                    if (!apellido1.Equals(usuario.Apellido1)) { usuario.Apellido1 = apellido1; flag = true; }
-                    if (!apellido2.Equals(usuario.Apellido2)) { usuario.Apellido2 = apellido2; flag = true; }
-                    if (!fechaNacimiento.Equals(usuario.FechaNacimiento)) { usuario.FechaNacimiento = fechaNacimiento; flag = true; }
-                    return flag;
+                    if (nick.Equals(usuario.Nick) && usuario.comparaPassword(password))
+                    {
+                        if(fechaNacimiento!=null) {
+                            DateTime t = (DateTime)fechaNacimiento;
+                            if (!Utilidad.compruebaFechaValida(t.Year,t.Month,t.Day))
+                                return false;
+                        }
+                        usuario.Nombre = nombre; 
+                        usuario.Apellido1 = apellido1; 
+                        usuario.Apellido2 = apellido2; 
+                        usuario.FechaNacimiento = fechaNacimiento;
+                        return true;
+                    }
                 }
             }
             return false;
