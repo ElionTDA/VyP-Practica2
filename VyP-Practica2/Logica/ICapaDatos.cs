@@ -33,7 +33,8 @@ namespace Logica
         /// <param name="apellido1">Apellido 1 de Usuario</param>
         /// <param name="apellido2">Apellido 2 de Usuario</param>
         /// <param name="fechaNacimiento">fecha de nacimiento</param>
-        bool cambiarDatosUsuario(String nick, String password, String v, String apellido1, String apellido2, DateTime fechaNacimiento);
+        bool cambiarDatosUsuario(String nick, String password, String v, String apellido1, 
+            String apellido2, DateTime? fechaNacimiento);
 
 
         /// <summary>

@@ -123,7 +123,8 @@ namespace Logica
         /// <param name="apellido1">Apellido 1 de Usuario</param>
         /// <param name="apellido2">Apellido 2 de Usuario</param>
         /// <param name="fechaNacimiento">fecha de nacimiento</param>
-        public bool cambiarDatosUsuario(String nick, String password, String v, String apellido1, String apellido2, DateTime fechaNacimiento)
+        public bool cambiarDatosUsuario(String nick, String password, String v, String apellido1, 
+            String apellido2, DateTime? fechaNacimiento)
         {
             bool flag = false;
             foreach (Usuario usuario in listaUsers)

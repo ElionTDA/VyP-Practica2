@@ -207,7 +207,7 @@ namespace Logica
         {
             bool flag = false;
 
-            if (Password != password)
+            if (this.password != password)
             {
                 aumentarNroIntentos();
                 if (nroIntentos == 3)

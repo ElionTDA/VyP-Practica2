@@ -138,7 +138,7 @@ namespace Test
             // Nombre demasiado corto. < 2
             try
             {
-                new Usuario("Juanito", "1234567890a", "J", "Perez", "Lopez", new DateTime(1992, 2, 29));
+                new Usuario("Juanito", "1234567890aA", "J", "Perez", "Lopez", new DateTime(1992, 2, 29));
                 Assert.Fail("Fallo, Nombre demasiado corto");
             }
             catch (Exception e)
@@ -147,7 +147,7 @@ namespace Test
             // Nombre demasiado largo > 20
             try
             {
-                new Usuario("Juanito", "1234567890a", "JuanJuanJuanJuanJuanJ", "Perez", "Lopez", new DateTime(1992, 2, 29));
+                new Usuario("Juanito", "1234567890aA", "JuanJuanJuanJuanJuanJ", "Perez", "Lopez", new DateTime(1992, 2, 29));
                 Assert.Fail("Fallo, Nombre demasiado largo");
             }
             catch (Exception e)
@@ -156,7 +156,7 @@ namespace Test
             // Nombre con numeros.
             try
             {
-                new Usuario("Juanito", "1234567890a", "J1uan", "Perez", "Lopez", new DateTime(1992, 2, 29));
+                new Usuario("Juanito", "1234567890aA", "J1uan", "Perez", "Lopez", new DateTime(1992, 2, 29));
                 Assert.Fail("Fallo, Nombre empieza por número");
             }
             catch (Exception e)
@@ -165,7 +165,7 @@ namespace Test
             // Nombre con caracteres especiales.
             try
             {
-                new Usuario("Juanito", "1234567890a", "_Juan", "Perez", "Lopez", new DateTime(1992, 2, 29));
+                new Usuario("Juanito", "1234567890aA", "_Juan", "Perez", "Lopez", new DateTime(1992, 2, 29));
                 Assert.Fail("Fallo, Nombre empieza por número");
             }
             catch (Exception e)
@@ -182,7 +182,7 @@ namespace Test
             // apellido1 demasiado corto. < 2
             try
             {
-                new Usuario("Juanito", "1234567890a", "Juan", "P", "Lopez", new DateTime(1992, 2, 29));
+                new Usuario("Juanito", "1234567890aA", "Juan", "P", "Lopez", new DateTime(1992, 2, 29));
                 Assert.Fail("Fallo, Apellido1 demasido corto.");
             }
             catch (Exception e)
@@ -191,7 +191,7 @@ namespace Test
             // apellido1 demasiado largo > 20
             try
             {
-                new Usuario("Juanito", "1234567890a", "Juan", "PérezPérezPérezPérezP", "Lopez", new DateTime(1992, 2, 29));
+                new Usuario("Juanito", "1234567890aA", "Juan", "PérezPérezPérezPérezP", "Lopez", new DateTime(1992, 2, 29));
                 Assert.Fail("Fallo, Apellido1 demasido largo.");
             }
             catch (Exception e)
@@ -200,7 +200,7 @@ namespace Test
             // apellido1 con número.
             try
             {
-                new Usuario("Juanito", "1234567890a", "Juan", "P1érez", "Lopez", new DateTime(1992, 2, 29));
+                new Usuario("Juanito", "1234567890aA", "Juan", "P1érez", "Lopez", new DateTime(1992, 2, 29));
                 Assert.Fail("Fallo, Apellido1 empieza por número.");
             }
             catch (Exception e)
@@ -209,7 +209,7 @@ namespace Test
             // apellido1 con caracter especial.
             try
             {
-                new Usuario("Juanito", "1234567890a", "Juan", "_Pérez", "Lopez", new DateTime(1992, 2, 29));
+                new Usuario("Juanito", "1234567890aA", "Juan", "_Pérez", "Lopez", new DateTime(1992, 2, 29));
                 Assert.Fail("Fallo, Apellido1 empieza por caracter especial.");
             }
             catch (Exception e)
@@ -227,7 +227,7 @@ namespace Test
             // apellido2 demasiado corto
             try
             {
-                new Usuario("Juanito", "1234567890a", "Juan", "Pérez", "L", new DateTime(1992, 2, 29));
+                new Usuario("Juanito", "1234567890aA", "Juan", "Pérez", "L", new DateTime(1992, 2, 29));
                 Assert.Fail("Fallo, Apellido2 demasiado corto.");
             }
             catch (Exception e)
@@ -236,7 +236,7 @@ namespace Test
             // apellido2 demasiado largo
             try
             {
-                new Usuario("Juanito", "1234567890a", "Juan", "Pérez", "LópezLópezLópezLópezL", new DateTime(1992, 2, 29));
+                new Usuario("Juanito", "1234567890aA", "Juan", "Pérez", "LópezLópezLópezLópezL", new DateTime(1992, 2, 29));
                 Assert.Fail("Fallo, Apellido2 demasiado largo.");
             }
             catch (Exception e)
@@ -245,7 +245,7 @@ namespace Test
             // apellido2 empieza por numero.
             try
             {
-                new Usuario("Juanito", "1234567890a", "Juan", "Pérez", "L1ópez", new DateTime(1992, 2, 29));
+                new Usuario("Juanito", "1234567890aA", "Juan", "Pérez", "L1ópez", new DateTime(1992, 2, 29));
                 Assert.Fail("Fallo, Apellido2 con número.");
             }
             catch (Exception e)
@@ -254,7 +254,7 @@ namespace Test
             // apellido2 que empieza por caracter especial.
             try
             {
-                new Usuario("Juanito", "1234567890a", "Juan", "Pérez", "_López", new DateTime(1992, 2, 29));
+                new Usuario("Juanito", "1234567890aA", "Juan", "Pérez", "_López", new DateTime(1992, 2, 29));
                 Assert.Fail("Fallo, Apellido2 con caracter especial.");
             }
             catch (Exception e)
@@ -271,7 +271,7 @@ namespace Test
             // Formato de fecha no valida
             try
             {
-                new Usuario("Juanito", "1234567890a", "Juan", "Pérez", "López", new DateTime(2020-1-10));
+                new Usuario("Juanito", "1234567890aA", "Juan", "Pérez", "López", new DateTime(2020-1-10));
                 Assert.Fail("Fallo, Formato de fecha no valida.");
             }
             catch (Exception e)
@@ -280,8 +280,8 @@ namespace Test
             // Fecha invalida año
             try
             {
-                new Usuario("Juanito", "1234567890a", "Juan", "Pérez", "López", new DateTime(2020, 1, 10));
-                Assert.Fail("Fallo, Apellido2 con caracter especial.");
+                new Usuario("Juanito", "1234567890aA", "Juan", "Pérez", "López", new DateTime(2020, 1, 10));
+                Assert.Fail("Fallo, fecha invalida.");
             }
             catch (Exception e)
             { }
@@ -289,8 +289,8 @@ namespace Test
             // Fecha invalida febrero
             try
             {
-                new Usuario("Juanito", "1234567890a", "Juan", "Pérez", "López", new DateTime(2001, 2, 29));
-                Assert.Fail("Fallo, Apellido2 con caracter especial.");
+                new Usuario("Juanito", "1234567890aA", "Juan", "Pérez", "López", new DateTime(2001, 2, 29));
+                Assert.Fail("Fallo, fecha invalida.");
             }
             catch (Exception e)
             { }
@@ -298,21 +298,13 @@ namespace Test
             // Fecha invalida dia
             try
             {
-                new Usuario("Juanito", "1234567890a", "Juan", "Pérez", "López", new DateTime(2000, 1, 32));
-                Assert.Fail("Fallo, Apellido2 con caracter especial.");
+                new Usuario("Juanito", "1234567890aA", "Juan", "Pérez", "López", new DateTime(2000, 1, 32));
+                Assert.Fail("Fallo, Fecha invalida.");
             }
             catch (Exception e)
             { }
 
         } // fin metodo crea usuario
-
-        [TestMethod]
-        public void editPasswordTest()
-        {
-            String p = usuario1.Password;
-            usuario1.cambiarDatosUsuario(null, "987654321bB", null, null, null, null);
-            Assert.AreNotEqual(p, usuario1.Password);
-        }
 
         [TestMethod]
         public void editTipoTest()
@@ -323,35 +315,11 @@ namespace Test
         }
 
         [TestMethod]
-        public void editFechaNacimientoTest()
+        public void comparaPasswordTest()
         {
-            DateTime? f = usuario1.FechaNacimiento;
-            usuario1.cambiarDatosUsuario(null, null, null, null, null, new DateTime(2000, 12, 12));
-            Assert.AreNotEqual(f, usuario1.FechaNacimiento);
-        }
-
-        [TestMethod]
-        public void editNombre()
-        {
-            String nombre = usuario1.Nombre;
-            usuario1.cambiarDatosUsuario(null, null, "Abababa", null, null, null);
-            Assert.AreNotEqual(nombre, usuario1.Nombre);
-        }
-
-        [TestMethod]
-        public void editApellido1()
-        {
-            String a = usuario1.Apellido1;
-            usuario1.cambiarDatosUsuario(null, null, "Abababa", null, null, null);
-            Assert.AreNotEqual(a, usuario1.Apellido1);
-        }
-
-        [TestMethod]
-        public void editApellido2()
-        {
-            String a = usuario1.Apellido2;
-            usuario1.cambiarDatosUsuario(null, null, null, "Abababa", null, null);
-            Assert.AreNotEqual(a, usuario1.Apellido2);
+            Usuario u = new Usuario("Juanito", "1234567890aA", "Juan", "Pérez", "López", new DateTime(2001, 2, 12));
+            Assert.IsTrue(u.comparaPassword("1234567890aA"));
+            Assert.IsFalse(u.comparaPassword("3492847jsd938"));
         }
 
         [TestMethod]
