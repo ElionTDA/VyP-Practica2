@@ -23,7 +23,7 @@ namespace Test
         [TestInitialize]
         public void Inicializar()
         {
-            dbpruebas = new DBPruebas();
+            dbpruebas = DBPruebas.getInstance();
         }
 
         [TestMethod]

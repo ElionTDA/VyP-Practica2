@@ -40,8 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBPruebas.cs" />
+    <Compile Include="ICapaDatos.cs" />
     <Compile Include="TipoUsuario.cs" />
-    <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidad.cs" />
   </ItemGroup>
