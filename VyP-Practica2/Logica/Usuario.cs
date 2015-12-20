@@ -65,7 +65,7 @@ namespace Logica
                 }
                 else
                 {
-                    throw new Exception();
+                    throw new Exception("El password no es admisible");
                 }
             }
         }
@@ -104,7 +104,7 @@ namespace Logica
                     }
                     else
                     {
-                        //throw new Exception();
+                        throw new Exception("La fecha no es apropiada");
                     }
                 }
                 else
@@ -127,7 +127,7 @@ namespace Logica
                     }
                     else
                     {
-                        throw new Exception();
+                        throw new Exception("El nombre es incorrecto");
                     }
                 }
                 else
@@ -150,7 +150,7 @@ namespace Logica
                     }
                     else
                     {
-                        throw new Exception();
+                        throw new Exception("El apellido 1 es incorrecto");
                     }
                 }
                 else
@@ -173,7 +173,7 @@ namespace Logica
                     }
                     else
                     {
-                        throw new Exception();
+                        throw new Exception("El apellido 2 es incorrecto");
                     }
                 }
                 else
