@@ -30,14 +30,13 @@ namespace Logica
         /// Método para obtener Usuario
         /// </summary>
         /// <param name="nick">Nombre identificativo de Usuario</param>
-        public Usuario getUsuarioPorNick(String nick)
+        /// <param name="password">Contraseña cifrada del usuario</param>
+        public Usuario loginUsuario(String nick, String password)
         {
             foreach (Usuario usuario in listaUsers)
             {
-                if (nick.Equals(usuario.Nick))
-                {
+                if (nick.Equals(usuario.Nick) && password.Equals(usuario.Password))
                     return usuario;
-                }
             }
             return null;
 
@@ -47,11 +46,12 @@ namespace Logica
         /// Método parar eliminar el Usuario
         /// </summary>
         /// <param name="nick">Nombre identificativo de Usuario</param>
-        public bool deleteUsuarioPorNick(String nick)
+        /// <param name="password">Contraseña cifrada del usuario</param>
+        public bool deleteUsuarioPorNick(String nick, String password)
         {
             foreach (Usuario usuario in listaUsers)
             {
-                if (nick.Equals(usuario.Nick))
+                if (nick.Equals(usuario.Nick) && password.Equals(usuario.Password))
                 {
                     listaUsers.Remove(usuario);
                     return true;
