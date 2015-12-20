@@ -5,6 +5,9 @@ namespace Logica
 {
     public class DBPruebas : ICapaDatos
     {
+
+        private List<Log> logList;
+
         /// <summary>
         /// Almacena la instancia única de la clase.
         /// </summary>
@@ -25,6 +28,9 @@ namespace Logica
                 "Jose María", "López", "Pérez", new DateTime(1974, 4, 21));
             u.editTipo(TipoUsuario.ADMINISTRADOR);
             listaUsers.Add(u);
+            //------------------------------------------------
+            logList = new List<Log>();
+            logList.Add(new Log(u,u.Tipo, TipoSeccion.SIGN_IN, new DateTime(2015,12,18)));
         }
 
         /// <summary>
@@ -170,5 +176,40 @@ namespace Logica
             return false;
 
         }
+
+
+        //-----------------------------------------------------------------------
+        public void generaLog()
+        {
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(@"registro.txt"))
+            {
+                foreach (Log l in logList)
+                {
+                    file.WriteLine(l.stringInforme());
+                }
+            }
+        }
+
+        public bool borrarLog(String nick, String password)
+        {
+            Usuario u = getUsuarioPorNick(nick);
+            if (u != null && u.comparaPassword(password))
+            {
+                if (u.Tipo == TipoUsuario.ADMINISTRADOR)
+                {
+                    foreach (Log l in logList)
+                    {
+                        logList.Remove(l);
+                    }
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+
+
     }
 }

@@ -153,5 +153,24 @@ namespace Test
             //Assert.IsTrue(dbpruebas.cambiarDatosUsuario(usuario.Nick, password, usuario.Nombre, usuario.Apellido1, usuario.Apellido2, hoy));
             Assert.IsFalse(dbpruebas.cambiarDatosUsuario(usuario.Nick, password, usuario.Nombre, usuario.Apellido1, usuario.Apellido2, mañana));
         }
+
+
+        //--------------------------------------------------------------------------
+
+
+        [TestMethod]
+        public void generaLog()
+        {
+            //¿Pasar un test con un fichero?
+        }
+
+        [TestMethod]
+        public void borraLog()
+        {
+            //Borrar log como Administrador
+            Assert.IsTrue(dbpruebas.borrarLog("JoseMari43",Utilidad.cifrar("1234567890a")));
+            //No puede borrar sin registrarse bien
+            Assert.IsFalse(dbpruebas.borrarLog("Patxi23", Utilidad.cifrar("1234567890a")));
+        }
     }
 }
