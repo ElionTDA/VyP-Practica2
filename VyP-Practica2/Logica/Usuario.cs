@@ -57,8 +57,13 @@ namespace Logica
 
         public String Password
         {
-            get;
-            set;
+            set
+            {
+                if (value != null && value.Length!=0)
+                {
+                    password = value;
+                }
+            }
         }
 
         public TipoUsuario Tipo
@@ -135,58 +140,11 @@ namespace Logica
         }
         //FIN GETTERS SETTERS
 
-        public bool cambiarDatosUsuario(String nick, String password, String nombre,
-            String apellido1, String apellido2, DateTime? fechaNacimiento)
+        public bool comparaPassword(String p)
         {
-            bool flag = false;
-
-            if (nick != null)
-            {
-                throw new Exception();
-            }
-
-            if (password != null)
-            {
-                Password = password;
-                flag = true;
-            }
-
-            if (nombre != null && Utilidad.compruebaNombre(nombre))
-            {
-                Nombre = nombre;
-                flag = true;
-            }
-
-            if (apellido1 != null && Utilidad.compruebaNombre(apellido1))
-            {
-                Apellido1 = apellido1;
-                flag = true;
-            }
-
-            if (apellido2 != null && Utilidad.compruebaNombre(apellido2))
-            {
-                Apellido2 = apellido2;
-                flag = true;
-            }
-
-            if (fechaNacimiento != null)
-            {
-                DateTime fecha = (DateTime)fechaNacimiento;
-                if (Utilidad.compruebaFechaValida(fecha.Year,
-                fecha.Month, fecha.Day))
-                {
-                    FechaNacimiento = fechaNacimiento;
-                    flag = true;
-                }
-            }
-
-            if (flag == false)
-            {
-                throw new Exception();
-            }
-
-            return flag;
+            return password.Equals(p);
         }
+
 
         public bool editTipo(TipoUsuario tipo)
         {

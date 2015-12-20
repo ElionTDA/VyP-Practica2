@@ -70,7 +70,7 @@ namespace Logica
         public Usuario loginUsuario(String nick, String password)
         {
             Usuario user = getUsuarioPorNick(nick);
-            if (user!=null && password.Equals(user.Password))
+            if (user!=null && user.comparaPassword(password))
             {
                 return user;
             }
@@ -104,7 +104,7 @@ namespace Logica
         {
             foreach (Usuario usuario in listaUsers)
             {
-                if (nick.Equals(usuario.Nick) && password.Equals(usuario.Password))
+                if (nick.Equals(usuario.Nick) && usuario.comparaPassword(password))
                 {
                     listaUsers.Remove(usuario);
                     return true;
@@ -128,7 +128,7 @@ namespace Logica
             bool flag = false;
             foreach (Usuario usuario in listaUsers)
             {
-                if (nick.Equals(usuario.Nick) && password.Equals(usuario.Password))
+                if (nick.Equals(usuario.Nick) && usuario.comparaPassword(password))
                 {
                     if (!apellido1.Equals(usuario.Apellido1)) { usuario.Apellido1 = apellido1; flag = true; }
                     if (!apellido2.Equals(usuario.Apellido2)) { usuario.Apellido2 = apellido2; flag = true; }
@@ -149,7 +149,7 @@ namespace Logica
         {
             foreach (Usuario usuario in listaUsers)
             {
-                if (nick.Equals(usuario.Nick) && password.Equals(usuario.Password))
+                if (nick.Equals(usuario.Nick) && usuario.comparaPassword(password))
                 {
                     usuario.Password = p;
                     return true;

@@ -115,7 +115,7 @@ namespace Logica
             }
         }
 
-        public String cifrar(String password)
+        public static String cifrar(String password)
         {
             HashAlgorithm hashValue = new
             SHA1CryptoServiceProvider();
